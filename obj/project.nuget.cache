@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "IU9Y5Z0SrF6zwbZQfPDifngvAwXiHGJDvzs14BkrkLBeqnHQMVWcXyB0i4zXB1qeoMbEBwojOPg8oXZySPdqhA==",
+  "success": true,
+  "projectFilePath": "C:\\dev\\thirdparty\\fleepage.oatleaf.com\\fleepage.oatleaf.com.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dev-User\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}
