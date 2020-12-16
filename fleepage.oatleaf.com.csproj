@@ -4,5 +4,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="AutoMapper\Profiles\" />
+    <Folder Include="Commands\Dto\" />
+    <Folder Include="Helper\Sms\" />
+    <Folder Include="Helper\Payment\" />
+    <Folder Include="Helper\Paging\" />
+    <Folder Include="Queries\Dto\" />
+    <Folder Include="Validators\Command\" />
+    <Folder Include="Validators\Queries\" />
+  </ItemGroup>
+
 
 </Project>
