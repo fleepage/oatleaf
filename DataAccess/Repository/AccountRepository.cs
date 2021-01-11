@@ -38,6 +38,20 @@ namespace fleepage.oatleaf.com.DataAccess.Repository
             return accounts;
         }
 
+        public async Task<ICollection<Accounts>> MyAccounts(long user)
+        {
+            var myAccounts = await context.Accounts
+     .Include(a => a.Students.School)
+     .Include(a => a.Parent)
+     .Include(a => a.Teachers.School)
+     .Include(a => a.Staffs.School)
+     .Include(a => a.OrgAdmin.Organisation)
+     .Include(a => a.SchoolAdmin.School)
+     .Where(x => x.UserId == user).ToListAsync();
+
+            return myAccounts;
+        }
+
         public async Task<Accounts> Select(long account, long user)
         {
             var myAccount = await context.Accounts

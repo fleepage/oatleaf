@@ -12,6 +12,7 @@ namespace fleepage.oatleaf.com.Domain.Models
 
         public long? UserId { get; set; }
         public long? SchoolId { get; set; }
+        public virtual School School { get; set; }
         public DateTime? StartedAt { get; set; }
         public DateTime? EndedAt { get; set; }
         public int Rate { get; set; }

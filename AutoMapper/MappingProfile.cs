@@ -24,6 +24,7 @@ namespace fleepage.oatleaf.com.AutoMapper
 
 
             CreateMap<AccountDto, Accounts>().ReverseMap();
+            CreateMap<MyAccountsDto, Accounts>().ReverseMap();
             CreateMap<StudentAccountDto, Student>().ReverseMap();
             CreateMap<TeacherAccountDto, Teacher>().ReverseMap();
             CreateMap<StaffAccountDto, Staffs>().ReverseMap();
@@ -32,6 +33,8 @@ namespace fleepage.oatleaf.com.AutoMapper
             CreateMap<FreelanceAccountDto, Freelance>().ReverseMap();
             CreateMap<SchoolAdminDto, SchoolAdmin>().ReverseMap();
             CreateMap<OrgAdminDto, OrgAdmin>().ReverseMap();
+            CreateMap<SchoolAccountDto, School>().ReverseMap();
+            CreateMap<OrganisationAccountDto, Organisation>().ReverseMap();
 
 
             CreateMap<PermissionAccountDto, Permissions>().ReverseMap();

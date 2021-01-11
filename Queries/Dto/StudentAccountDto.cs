@@ -16,6 +16,7 @@ namespace fleepage.oatleaf.com.Queries.Dto
         public DateTime? GraduationDate { get; set; }
         public long? AdmittedBy { get; set; }
         public long? AccountsId { get; set; }
+        public SchoolAccountDto School { get; set; }
         //public ICollection<StudentPermissionDto> Permissions { get; set; }
     }
 }

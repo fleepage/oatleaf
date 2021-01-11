@@ -70,7 +70,7 @@ namespace fleepage.oatleaf.com.Queries
                             OtherNames = user.OtherNames,
                             Username = user.Username,
                             TempPassword = user.TempPassword,
-                            Accounts = mapper.Map<ICollection<AccountDto>>(user.Accounts),
+                            //Accounts = mapper.Map<ICollection<AccountDto>>(user.Accounts),
                             Token = tokenString
                         }
                     };

@@ -17,7 +17,7 @@ namespace fleepage.oatleaf.com.Queries.Dto
         public string TempPassword { get; set; }
         public string OtherNames { get; set; }
         //public DateTime? LastLoginDate { get; set; }
-        public ICollection<AccountDto> Accounts { get; set; }
+        //public ICollection<AccountDto> Accounts { get; set; }
         public string Token { get; set; }
     }
 }

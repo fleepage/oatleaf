@@ -54,5 +54,15 @@ namespace fleepage.oatleaf.com.DataAccess.Repository
 
             return new CreateSchoolResponse { IsSuccess = true, Message = "School has been registered successfully", Identifier = schoolDto.Identifier, SchoolId = schoolDto.Id };
         }
+
+        public async Task<VerifySchoolIdentifierResponse> Verify(string identifier)
+        {
+            var existingSchool = await context.Schools.FirstOrDefaultAsync(x => x.Identifier == identifier);
+
+            if (existingSchool?.Identifier == identifier)
+                return new VerifySchoolIdentifierResponse { IsSuccess = true, Message = string.Format("{0} is already taken.", identifier), IsExisting=true };
+
+            return new VerifySchoolIdentifierResponse { IsSuccess = true, Message = string.Format("{0} is available.", identifier), IsExisting = false };
+        }
     }
 }

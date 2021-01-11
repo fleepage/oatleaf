@@ -13,5 +13,6 @@ namespace fleepage.oatleaf.com.Queries.Dto
         public DateTime? StartedAt { get; set; }
         public DateTime? EndedAt { get; set; }
         public long? AccountsId { get; set; }
+        public SchoolAccountDto School { get; set; }
     }
 }

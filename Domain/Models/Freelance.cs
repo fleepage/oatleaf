@@ -10,6 +10,7 @@ namespace fleepage.oatleaf.com.Domain.Models
     {
         public long? UserId { get; set; }
         public long? SchoolId { get; set; }
+        public virtual School School { get; set; }
         public long? AccountsId { get; set; }
         public ICollection<Permissions> Permissions { get; set; }
         public ICollection<Notification> Notifications { get; set; }

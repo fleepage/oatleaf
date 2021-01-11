@@ -43,6 +43,15 @@ namespace fleepage.oatleaf.com
 
             services.AddHealthChecks().AddDbContextCheck<ApplicationDbContext>();
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddCors(options => {
+                options.AddPolicy("FrontEnd", builder => {
+                    builder.
+                    WithOrigins("http://localhost:3000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .Build();
+                });
+            });
             services.AddControllers().AddNewtonsoftJson(options => {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 //options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -113,6 +122,8 @@ namespace fleepage.oatleaf.com
             services.AddScoped<IMemberRepository, MemberRepository>();
             services.AddScoped<IFreelanceRepository, FreelanceRepository>();
 
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -125,9 +136,10 @@ namespace fleepage.oatleaf.com
 
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseCors();
             app.UseAuthentication();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

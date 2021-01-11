@@ -7,12 +7,14 @@ using fleepage.oatleaf.com.Helper.Exceptions;
 using fleepage.oatleaf.com.Queries;
 using fleepage.oatleaf.com.Queries.Dto;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace fleepage.oatleaf.com.Controllers
 {
+    [EnableCors("FrontEnd")]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -29,7 +31,7 @@ namespace fleepage.oatleaf.com.Controllers
 
 
 
-
+        
         [HttpPost]
         [Route("signin")]
         public async Task<IActionResult> signin([FromBody] LoginQuery request)

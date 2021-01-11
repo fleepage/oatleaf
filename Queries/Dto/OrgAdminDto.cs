@@ -10,5 +10,6 @@ namespace fleepage.oatleaf.com.Queries.Dto
         public long UserId { get; set; }
         public long OrganisationId { get; set; }
         public long? AccountsId { get; set; }
+        public OrganisationAccountDto Organisation { get; set; }
     }
 }

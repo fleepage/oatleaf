@@ -7,12 +7,14 @@ using fleepage.oatleaf.com.Helper.Exceptions;
 using fleepage.oatleaf.com.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace fleepage.oatleaf.com.Controllers
 {
+    [EnableCors("FrontEnd")]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -50,6 +52,39 @@ namespace fleepage.oatleaf.com.Controllers
             {
 
                 return BadRequest(new { message = "Claims "+ex.Message });
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(new { message = "Claims " + ex.Message });
+            }
+        }
+
+        [HttpPost]
+        [Route("MyAccounts")]
+        public async Task<IActionResult> MyAccountsAsync( )
+        {
+            try
+            {
+                MyAccountsQuery request = new MyAccountsQuery();
+                var tenant = HttpContext.User.Claims;
+                request.user = long.Parse(tenant.Where(c => c.Type == ClaimTypes.Name).FirstOrDefault().Value);
+                var result = await mediator.Send(request);
+
+                if (result.IsSuccess)
+                {
+                    return Ok(new { result.Message, result.MyAccounts });
+                }
+                else
+                {
+                    return BadRequest(new { result.Message });
+                }
+            }
+            catch (AppException ex)
+            {
+
+                return BadRequest(new { message = "Claims " + ex.Message });
 
             }
             catch (Exception ex)

@@ -12,6 +12,7 @@ namespace fleepage.oatleaf.com.Domain.Models
 
         public long? UserId { get; set; }
         public long? OrganisationId { get; set; }
+        public virtual Organisation Organisation { get; set; }
         public long? AccountsId { get; set; }
         public ICollection<Permissions> Permissions { get; set; }
         public ICollection<Notification> Notifications { get; set; }

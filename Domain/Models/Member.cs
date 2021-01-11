@@ -10,6 +10,7 @@ namespace fleepage.oatleaf.com.Domain.Models
     {
         public long? UserId { get; set; }
         public long? OrganisationId { get; set; }
+        public virtual Organisation Organisation { get; set; }
         public DateTime? StartedAt { get; set; }
         public DateTime? EndedAt { get; set; }
         public int Rate { get; set; }

@@ -22,6 +22,7 @@ namespace fleepage.oatleaf.com.Domain.Models
         public string Email { get; set; }
         [Column(TypeName = "nvarchar(64)")]
         public string Phone { get; set; }
+        [Column(TypeName = "nvarchar(256)")]
         public string Address { get; set; }
         [Column(TypeName = "nvarchar(32)")]
         public string Country { get; set; }

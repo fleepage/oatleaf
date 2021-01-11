@@ -30,12 +30,12 @@ namespace fleepage.oatleaf.com.DataAccess.Repository
                 throw new EntityNotFoundException("Username or password is incorrect.");
 
             var user = await _context.Users
-                .Include(u => u.Accounts)?.ThenInclude(a => a.Students)
+/*                .Include(u => u.Accounts)?.ThenInclude(a => a.Students)
                 .Include(u => u.Accounts)?.ThenInclude(a => a.Parent)
                 .Include(u => u.Accounts)?.ThenInclude(a => a.Teachers)
                 .Include(u => u.Accounts)?.ThenInclude(a => a.Staffs)
                 .Include(u => u.Accounts)?.ThenInclude(a => a.OrgAdmin)
-                .Include(u => u.Accounts)?.ThenInclude(a => a.SchoolAdmin)
+                .Include(u => u.Accounts)?.ThenInclude(a => a.SchoolAdmin)*/
                 .SingleOrDefaultAsync(x => x.Email == dto.Username || x.Phone == dto.Username || x.Username == dto.Username);
 
             // check if user exists
@@ -62,7 +62,7 @@ namespace fleepage.oatleaf.com.DataAccess.Repository
                 {
                     var secondsToWait = _appSettings.LoginFailedWaitingTime - secondsPassed;
                     throw new AppException(string.Format(
-                        "You must wait for {0} minutes before you try to log in again.", (int)(Math.Floor((double)(secondsToWait / 60)))));
+                        "You must wait for {0} minutes before you try to log in again.", (int)(Math.Floor((double)(secondsToWait / 60)))+1));
                 }
             }
 

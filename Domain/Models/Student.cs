@@ -12,6 +12,7 @@ namespace fleepage.oatleaf.com.Domain.Models
 
         public long? UserId { get; set; }
         public long? SchoolId { get; set; }
+        public virtual School School { get; set; }
         public long? ParentId { get; set; }
         public long? OrganisationId { get; set; }
         public int Rate { get; set; }
@@ -31,6 +32,7 @@ namespace fleepage.oatleaf.com.Domain.Models
         public ICollection<Fee> Fees { get; set; }
         public ICollection<Assessment> Assessments { get; set; }
         public ICollection<SubjectCA> SubjectCAs { get; set; }
+
 
     }
 }

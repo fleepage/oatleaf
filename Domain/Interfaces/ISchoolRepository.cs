@@ -11,5 +11,6 @@ namespace fleepage.oatleaf.com.Domain.Interfaces
     public interface ISchoolRepository : IGenericRepository<School>
     {
         Task<CreateSchoolResponse> Create(School school);
+        Task<VerifySchoolIdentifierResponse> Verify(string identifier);
     }
 }

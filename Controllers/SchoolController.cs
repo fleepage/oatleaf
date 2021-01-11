@@ -5,14 +5,17 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using fleepage.oatleaf.com.Commands;
 using fleepage.oatleaf.com.Helper.Exceptions;
+using fleepage.oatleaf.com.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace fleepage.oatleaf.com.Controllers
 {
+    [EnableCors("FrontEnd")]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -60,11 +63,30 @@ namespace fleepage.oatleaf.com.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("verify")]
-        public ActionResult Identifier()
+        public async Task<ActionResult> Identifier([FromBody] VerifySchoolIdentifierQuery request)
         {
-            return Ok();
+            try
+            {
+                var result = await mediator.Send(request);
+
+                if (result.IsSuccess)
+                    return Ok(new { result.IsExisting, result.Message, result.IsSuccess });
+                else
+                    return BadRequest(new { result.Message, result.IsSuccess });
+
+            }
+            catch (AppException ex)
+            {
+
+                return BadRequest(new { message = ex.Message, IsSuccess = false });
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(new { message = ex.Message, IsSuccess = false });
+            }
         }
 
         [HttpGet]
