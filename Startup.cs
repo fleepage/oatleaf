@@ -133,8 +133,9 @@ namespace fleepage.oatleaf.com
             }
 
             app.UseHttpsRedirection();
-            app.UseRouting();
             app.UseCors("FrontEnd");
+            app.UseRouting();
+            
             app.UseAuthentication();
             app.UseAuthorization();
             

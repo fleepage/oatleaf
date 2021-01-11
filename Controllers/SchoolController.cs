@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 
 namespace fleepage.oatleaf.com.Controllers
 {
-    [EnableCors("FrontEnd")]
+    //[EnableCors("FrontEnd")]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
