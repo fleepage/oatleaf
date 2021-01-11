@@ -46,10 +46,8 @@ namespace fleepage.oatleaf.com
             services.AddCors(options => {
                 options.AddPolicy("FrontEnd", builder => {
                     builder.AllowAnyOrigin()
-                    //WithOrigins("http://localhost:3000", "http://oatleaf.com/")
-                        .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .Build();
+                        .AllowAnyHeader();
                 });
             });
             services.AddControllers().AddNewtonsoftJson(options => {
@@ -136,7 +134,7 @@ namespace fleepage.oatleaf.com
 
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseCors();
+            app.UseCors("FrontEnd");
             app.UseAuthentication();
             app.UseAuthorization();
             
