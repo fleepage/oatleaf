@@ -38,18 +38,20 @@ namespace fleepage.oatleaf.com
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddHealthChecks().AddDbContextCheck<ApplicationDbContext>();
-            services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddCors(options => {
-                options.AddPolicy("FrontEnd", builder => {
+                options.AddPolicy("MyPolicy", builder => {
                     builder.AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                 });
             });
+            services.AddMvc();
+            services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddHealthChecks().AddDbContextCheck<ApplicationDbContext>();
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+
             services.AddControllers().AddNewtonsoftJson(options => {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 //options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -133,7 +135,7 @@ namespace fleepage.oatleaf.com
             }
 
             app.UseHttpsRedirection();
-            app.UseCors("FrontEnd");
+            app.UseCors("MyPolicy");
             app.UseRouting();
             
             app.UseAuthentication();
