@@ -45,8 +45,8 @@ namespace fleepage.oatleaf.com
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddCors(options => {
                 options.AddPolicy("FrontEnd", builder => {
-                    builder.
-                    WithOrigins("http://localhost:3000", "http://oatleaf.com/")
+                    builder.AllowAnyOrigin()
+                    //WithOrigins("http://localhost:3000", "http://oatleaf.com/")
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .Build();
