@@ -30,10 +30,11 @@ jobs:
           dotnet publish -c Release -o '${{ env.WEBAPP_PACKAGE_PATH }}/backend'
 
       - name: 📂 Sync files
-        uses: sebastianpopp/ftp-action@releases/v2
+        uses: kevinpainchaud/simple-ftp-deploy-action@v1.2.1
         with:
-          host: ftp-eu.site4now.net
-          user: xenophilya-001
-          password: ${{ secrets.SmarterAspFtp }}
-          localDir: ./backend/
-          remoteDir: /oatbackend/
+          ftp_host: "ftp-eu.site4now.net"
+          ftp_username: "xenophilya-001"
+          ftp_password: ${{ secrets.SmarterAspFtp }}
+          local_source_dir: "./backend/"
+          dist_target_dir: "/oatbackend/"
+          delete: "true"
