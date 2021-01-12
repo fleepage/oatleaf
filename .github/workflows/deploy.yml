@@ -32,10 +32,10 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
         with:
-          server: ftp-eu.site4now.net
-          username: xenophilya-001
-          password: ${{ secrets.SmarterAspFtp }}
-          local-dir: ./backend/
-          server-dir: /oatbackend/
+          FTP_SERVER: ftp-eu.site4now.net
+          FTP_USERNAME: xenophilya-001
+          FTP_PASSWORD: ${{ secrets.SmarterAspFtp }}
+          LOCAL_DIR: ./backend/
+          REMOTE_DIR: /oatbackend/
           ARGS: --delete
           #dangerous-clean-slate: true
