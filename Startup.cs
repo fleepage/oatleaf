@@ -39,8 +39,9 @@ namespace fleepage.oatleaf.com
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options => {
-                options.AddDefaultPolicy(builder => {
-                    builder.WithOrigins("https://oatleaf.com/", "http://localhost:3000", "http://oatleaf.com/")
+                options.AddPolicy("MyPolicy", builder => {
+                    builder.AllowAnyOrigin()
+                    //WithOrigins("https://oatleaf.com/", "http://localhost:3000", "http://oatleaf.com/")
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                 });
@@ -138,7 +139,7 @@ namespace fleepage.oatleaf.com
             
             app.UseRouting();
 
-            app.UseCors();
+            app.UseCors("MyPolicy");
 
             app.UseAuthentication();
             app.UseAuthorization();
